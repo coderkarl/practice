@@ -6,8 +6,8 @@
 #define NUM_ROWS 70
 #define NUM_COLS 55
 #define NUM_THETA 8
-#define DIAG_WEIGHT 2
-#define REV_WEIGHT 1
+#define DIAG_WEIGHT 1.5
+#define REV_WEIGHT 3
 #define MAX_OPEN 10000
 #define MAX_PATH_NODES 4000
 
@@ -173,7 +173,7 @@ int main()
 		md(5);
 		for(m = 0; m<numMotions; m++)
 		{
-			cost = arc_move(next_pos,x1,y1,th1,motions[m],DIST);
+			cost = arc_move(next_pos,x1,y1,th1,motions[m],DIST,REV_WEIGHT,DIAG_WEIGHT);
 			if(next_pos[0] == 32767)
 			{
 				printf("Invalid motion in move\n");
@@ -312,7 +312,7 @@ int main()
 			//printf("action: %d\n",action[r1][c1][p1]);
 			rev_motion = -action[r1][c1][p1];
 			
-			cost = arc_move(next_pos,x1,y1,th1,rev_motion,DIST);
+			cost = arc_move(next_pos,x1,y1,th1,rev_motion,DIST,REV_WEIGHT,DIAG_WEIGHT);
 			if(next_pos[0] == 32767)
 			{
 				printf("Invalid motion in move\n");

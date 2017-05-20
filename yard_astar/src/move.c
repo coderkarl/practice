@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-float arc_move(float next_pos[], float x1, float y1, int th1, int motion, float d)
+float arc_move(float next_pos[], float x1, float y1, int th1, int motion, float d, float rev_weight, float diag_weight)
 {
 	//motion will be one of: -3(rev right),-2(rev left),-1(rev), 1(fwd), 2(fwd left), 3(fwd right)
 	float cost;
@@ -35,11 +35,11 @@ float arc_move(float next_pos[], float x1, float y1, int th1, int motion, float 
 	cost = abs(delta_x[m_index][p]) + abs(delta_y[m_index][p]);
 	if(motion < 0)
 	{
-		cost = cost*2;
+		cost = cost*rev_weight;
 	}
 	if(motion < -1 || motion > 1)
 	{
-		cost = cost*1.5;
+		cost = cost*diag_weight;
 	}
 	return cost;
 }
