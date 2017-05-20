@@ -7,7 +7,7 @@
 #define NUM_COLS 55
 #define NUM_THETA 8
 #define DIAG_WEIGHT 1.5
-#define REV_WEIGHT 3
+#define REV_WEIGHT 2
 #define MAX_OPEN 10000
 #define MAX_PATH_NODES 4000
 
